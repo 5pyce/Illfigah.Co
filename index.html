@@ -1,638 +1,185 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Illfigah Kennels — Bred Different</title>
-  <meta name="description" content="Illfigah Kennels — family raised, raw fed, screened homes only. Directory-style page for dogs, litters, process, and contact." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Illfigah Kennels | Bred Different</title>
 
-  <style>
-    :root{
-      --bg:#0b0b0d;
-      --panel:#111115;
-      --panel2:#0f0f12;
-      --text:#f2f2f2;
-      --muted:#b9b9b9;
-      --line:#232329;
-      --gold:#c9a24a;
-      --gold2:#9a7a2e;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius:18px;
-      --max:1100px;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:var(--font);
-      background:
-        radial-gradient(1200px 700px at 20% -10%, rgba(201,162,74,.12), transparent 55%),
-        radial-gradient(900px 600px at 110% 10%, rgba(201,162,74,.08), transparent 55%),
-        linear-gradient(180deg, #070709 0%, var(--bg) 55%, #070709 100%);
-      color:var(--text);
-      line-height:1.4;
-    }
-    a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px}
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(11,11,13,.78);
-      border-bottom:1px solid var(--line);
-    }
-    .topbar-inner{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px; padding:12px 0;
-    }
-    .brand{
-      display:flex; align-items:center; gap:12px; min-width:220px;
-    }
-    .brand img{
-      height:34px; width:auto; display:block;
-      filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
-    }
-    .brand .name{display:flex; flex-direction:column; gap:2px}
-    .brand .name strong{font-size:14px; letter-spacing:.16em; text-transform:uppercase}
-    .brand .name span{font-size:12px; color:var(--muted); letter-spacing:.12em}
-    .nav{
-      display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end;
-    }
-    .nav a{
-      text-decoration:none;
-      padding:8px 10px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background: rgba(17,17,21,.55);
-      color:var(--muted);
-      font-size:12px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      transition: all .15s ease;
-      white-space:nowrap;
-    }
-    .nav a:hover{
-      border-color: rgba(201,162,74,.55);
-      color: var(--text);
-      background: rgba(201,162,74,.08);
-    }
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
 
-    /* Hero */
-    .hero{
-      padding:22px 0 8px;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap:16px;
-      align-items:stretch;
-    }
-    .hero-card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background: linear-gradient(180deg, rgba(17,17,21,.72), rgba(15,15,18,.55));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .hero-media{
-      position:relative;
-      min-height:420px;
-      background:#0a0a0c;
-    }
-    .hero-media img{
-      width:100%; height:100%; object-fit:cover; display:block;
-      filter: contrast(1.02) saturate(1.02);
-    }
-    .hero-media:after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.05) 60%, rgba(0,0,0,.35));
-      pointer-events:none;
-    }
-    .hero-copy{
-      position:absolute; inset:auto 0 0 0;
-      padding:18px;
-    }
-    .tagline{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:8px 12px;
-      border:1px solid rgba(201,162,74,.35);
-      border-radius:999px;
-      background: rgba(0,0,0,.35);
-      color: var(--text);
-      font-size:12px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-    }
-    .hero-copy h1{
-      margin:12px 0 8px;
-      font-size:28px;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-    }
-    .hero-copy p{
-      margin:0;
-      color:var(--muted);
-      max-width:62ch;
-    }
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:#000;
+    color:#fff;
+    line-height:1.6;
+}
 
-    .hero-side{
-      padding:16px;
-      display:flex; flex-direction:column; gap:12px;
-    }
-    .pill{
-      border:1px solid var(--line);
-      background: rgba(17,17,21,.55);
-      border-radius:14px;
-      padding:12px;
-    }
-    .pill h3{
-      margin:0 0 8px;
-      font-size:12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color: var(--text);
-    }
-    .pill p{margin:0; color:var(--muted); font-size:13px}
-    .gold{
-      color: var(--gold);
-      font-weight:650;
-    }
-    .cta-row{
-      display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;
-    }
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      text-decoration:none;
-      padding:11px 14px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(17,17,21,.7);
-      color: var(--text);
-      font-size:12px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      transition: all .15s ease;
-    }
-    .btn:hover{
-      border-color: rgba(201,162,74,.6);
-      background: rgba(201,162,74,.08);
-    }
-    .btn.primary{
-      border-color: rgba(201,162,74,.7);
-      background: linear-gradient(180deg, rgba(201,162,74,.14), rgba(201,162,74,.06));
-    }
+section {
+    padding:80px 20px;
+    text-align:center;
+}
 
-    /* Sections */
-    section{padding:18px 0}
-    .section-head{
-      display:flex; align-items:flex-end; justify-content:space-between; gap:14px;
-      margin:10px 0 12px;
-    }
-    .section-head h2{
-      margin:0;
-      font-size:14px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-    }
-    .section-head span{color:var(--muted); font-size:13px}
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap:14px;
-    }
-    .card{
-      grid-column: span 6;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background: rgba(17,17,21,.55);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .card .media{
-      height:260px; background:#0a0a0c; position:relative;
-    }
-    .card .media img{width:100%; height:100%; object-fit:cover; display:block}
-    .card .body{padding:14px}
-    .kicker{
-      font-size:12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color: var(--muted);
-      margin:0 0 8px;
-    }
-    .title{
-      margin:0 0 8px;
-      font-size:18px;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-    }
-    .meta{
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin:10px 0 0;
-    }
-    .chip{
-      font-size:12px;
-      color: var(--muted);
-      border:1px solid var(--line);
-      background: rgba(15,15,18,.35);
-      padding:7px 10px;
-      border-radius:999px;
-    }
-    .note{
-      border-left: 3px solid rgba(201,162,74,.7);
-      background: rgba(201,162,74,.06);
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid rgba(201,162,74,.18);
-      color: var(--muted);
-      font-size:13px;
-    }
+.hero {
+    height:100vh;
+    background:linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url("hero.jpg") center/cover no-repeat;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
 
-    .two-col{
-      grid-column: span 6;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background: rgba(17,17,21,.55);
-      padding:14px;
-      box-shadow: var(--shadow);
-    }
-    .two-col h3{
-      margin:0 0 10px;
-      font-size:12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-    }
-    .list{
-      margin:0; padding:0 0 0 18px; color:var(--muted); font-size:13px;
-    }
-    .list li{margin:6px 0}
+.hero img {
+    width:220px;
+    margin-bottom:30px;
+}
 
-    .footer{
-      border-top:1px solid var(--line);
-      padding:18px 0 28px;
-      color:var(--muted);
-      font-size:12px;
-    }
+.hero h1 {
+    font-size:48px;
+    letter-spacing:6px;
+    margin-bottom:20px;
+}
 
-    /* Responsive */
-    @media (max-width: 920px){
-      .hero-grid{grid-template-columns: 1fr}
-      .card{grid-column: span 12}
-      .two-col{grid-column: span 12}
-      .hero-media{min-height:360px}
-      .nav{justify-content:flex-start}
-    }
-  </style>
+.hero p {
+    max-width:700px;
+    opacity:0.8;
+}
+
+.directory {
+    background:#111;
+}
+
+.directory a {
+    display:block;
+    margin:15px auto;
+    max-width:400px;
+    padding:15px;
+    border:1px solid #333;
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+}
+
+.directory a:hover {
+    background:#222;
+}
+
+.dog img {
+    width:90%;
+    max-width:600px;
+    margin-bottom:20px;
+    border:2px solid #222;
+}
+
+.gallery {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:40px;
+}
+
+.gallery img {
+    width:100%;
+    border:2px solid #222;
+}
+
+h2 {
+    font-size:28px;
+    margin-bottom:20px;
+    letter-spacing:3px;
+}
+
+.footer {
+    background:#111;
+    font-size:14px;
+    opacity:0.7;
+}
+</style>
 </head>
 
 <body>
-  <!-- TOP DIRECTORY NAV -->
-  <header class="topbar">
-    <div class="wrap">
-      <div class="topbar-inner">
-        <div class="brand">
-          <!-- Replace with your hosted logo URL -->
-          <img src="YOUR_LOGO_URL.png" alt="Illfigah Kennels logo" />
-          <div class="name">
-            <strong>Illfigah Kennels</strong>
-            <span>BRED DIFFERENT</span>
-          </div>
-        </div>
 
-        <nav class="nav" aria-label="Directory navigation">
-          <a href="#dogs">Dogs</a>
-          <a href="#litters">Litters</a>
-          <a href="#pups">Past Pups</a>
-          <a href="#standards">Standards</a>
-          <a href="#process">Process</a>
-          <a href="#payments">Payments</a>
-          <a href="#mentoring">Mentoring / Co-own</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-    </div>
-  </header>
+<!-- HERO -->
+<section class="hero">
+    <img src="logo.png" alt="Illfigah Logo">
+    <h1>BRED DIFFERENT</h1>
+    <p>Premier Australian American Bully Breeder. Established 2019. Raw fed. Family raised. Health focused. Temperament first.</p>
+</section>
 
-  <!-- HERO -->
-  <main class="wrap">
-    <div class="hero">
-      <div class="hero-grid">
-        <div class="hero-card hero-media">
-          <!-- Replace with your hosted hero image URL -->
-          <img src="YOUR_HERO_IMAGE_URL.jpg" alt="Illfigah Kennels hero dog photo" />
-          <div class="hero-copy">
-            <div class="tagline">BRED DIFFERENT</div>
-            <h1>Authority. Structure. Standards.</h1>
-            <p>
-              We’re not here to “sell dogs”. We place family-raised, raw-fed animals into
-              <span class="gold">screened homes</span> that match our standard.
-            </p>
-          </div>
-        </div>
+<!-- DIRECTORY -->
+<section class="directory">
+    <h2>DIRECTORY</h2>
+    <a href="#stud">Stud Service</a>
+    <a href="#puppies">Puppy Sales</a>
+    <a href="#mentoring">Mentoring / Co-Own</a>
+</section>
 
-        <div class="hero-card hero-side">
-          <div class="pill">
-            <h3>Non-negotiables</h3>
-            <p>100% raw organic feeding • family raised • proven stable around animals, infants to teenagers.</p>
-          </div>
+<!-- STUD -->
+<section id="stud" class="dog">
+    <h2>BOBBY ILLFIGAH</h2>
+    <img src="bobby.jpg">
+    <p>21 TTW | 28 Head | 58kg</p>
+    <p>Australian First XL Stack Champion</p>
+    <p>Stud Fee: $10,000</p>
+</section>
 
-          <div class="pill">
-            <h3>Screened homes only</h3>
-            <p>
-              Owners will be screened for any past animal welfare crimes. Backyard photos and proof of means to care must be provided.
-              These dogs are not “just dogs” to us — they’re part of us.
-            </p>
-          </div>
+<!-- FEMALES -->
+<section class="dog">
+    <h2>MISS JUICY</h2>
+    <img src="juicy.jpg">
+    <p>22 TTW | 26 Head | 62kg</p>
+    <p>Next Litter: Mid 2026</p>
+</section>
 
-          <div class="pill">
-            <h3>Fast navigation</h3>
-            <p>Use the directory at the top to jump to exactly what you want. No fluff.</p>
-            <div class="cta-row">
-              <a class="btn primary" href="#process">How placement works</a>
-              <a class="btn" href="#contact">Email us</a>
-            </div>
-          </div>
-        </div>
-      </div>
+<section class="dog">
+    <h2>MARY JANE</h2>
+    <img src="mary.jpg">
+    <p>20 TTW | 26 Head | 52kg</p>
+    <p>Next Litter: Early 2026</p>
+</section>
+
+<section class="dog">
+    <h2>PURPLE HAZE</h2>
+    <img src="haze.jpg">
+    <p>First Generation Illfigah</p>
+    <p>18 TTW | 25 Head | 50kg</p>
+    <p>Next Litter: Early 2026</p>
+</section>
+
+<!-- PUPPIES -->
+<section id="puppies">
+    <h2>PREVIOUS LITTERS</h2>
+
+    <div class="gallery">
+        <img src="pup1.jpg" alt="Pup 1">
+        <img src="pup2.jpg" alt="Pup 2">
+        <img src="pup3.jpg" alt="Pup 3">
+        <img src="pup4.jpg" alt="Pup 4">
+        <img src="pup5.jpg" alt="Pup 5">
     </div>
 
-    <!-- DOGS -->
-    <section id="dogs">
-      <div class="section-head">
-        <h2>Dogs</h2>
-        <span>Core females. Structured info. No hype.</span>
-      </div>
+    <p style="margin-top:40px;">
+    All pups are 100% raw organic fed, family raised, and socialised with animals and children of all ages.
+    </p>
+    <p>
+    All owners screened. Backyard photos required. Proof of means to care required.
+    </p>
+    <p>
+    Payment accepted via Direct Transfer, Cash, Gold or Silver.
+    </p>
+</section>
 
-      <div class="grid">
-        <!-- Mary-Jane -->
-        <article class="card">
-          <div class="media">
-            <!-- Replace with hosted image URL for Mary-Jane -->
-            <img src="MARY_JANE_IMAGE_URL.jpg" alt="Mary-Jane" />
-          </div>
-          <div class="body">
-            <p class="kicker">Female • Illfigah</p>
-            <h3 class="title">Mary-Jane</h3>
-            <div class="meta">
-              <span class="chip">20" TTW</span>
-              <span class="chip">52kg</span>
-              <span class="chip">26" head</span>
-              <span class="chip">Next litter: early 2026</span>
-            </div>
-            <div style="margin-top:12px" class="note">
-              Family raised • good with animals • safe around small infants to teenagers • raw organic fed.
-            </div>
-          </div>
-        </article>
+<!-- MENTORING -->
+<section id="mentoring">
+    <h2>MENTORING / CO-OWN</h2>
+    <p>Email with full details, experience and budget.</p>
+    <p><strong>Email:</strong> your@email.com</p>
+</section>
 
-        <!-- Purple Haze -->
-        <article class="card">
-          <div class="media">
-            <!-- Replace with hosted image URL for Purple Haze -->
-            <img src="PURPLE_HAZE_IMAGE_URL.jpg" alt="Illfigahs Purple Haze" />
-          </div>
-          <div class="body">
-            <p class="kicker">Female • First generation Illfigah</p>
-            <h3 class="title">Illfigahs Purple Haze</h3>
-            <p style="margin:0;color:var(--muted);font-size:13px">
-              <span class="gold">Bobby</span> × <span class="gold">Miss Juicy</span>
-            </p>
-            <div class="meta">
-              <span class="chip">18" TTW</span>
-              <span class="chip">50kg</span>
-              <span class="chip">25" head</span>
-              <span class="chip">Next litter: early 2026</span>
-              <span class="chip">Waiting list open</span>
-            </div>
-            <div style="margin-top:12px" class="note">
-              Family raised • good with animals • safe around small infants to teenagers • raw organic fed.
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
+<!-- FOOTER -->
+<section class="footer">
+    <p>Illfigah Kennels © 2026 | Bred Different</p>
+</section>
 
-    <!-- LITTERS -->
-    <section id="litters">
-      <div class="section-head">
-        <h2>Litters</h2>
-        <span>Upcoming only. Early 2026.</span>
-      </div>
-
-      <div class="grid">
-        <div class="two-col">
-          <h3>Next litters (planned)</h3>
-          <ul class="list">
-            <li><strong>Mary-Jane</strong> — next litter due <span class="gold">early 2026</span>.</li>
-            <li><strong>Illfigahs Purple Haze</strong> — next litter <span class="gold">early 2026</span> (waiting list open).</li>
-          </ul>
-          <div style="margin-top:12px" class="note">
-            We don’t overbook. If you’re not ready to be screened, don’t enquire.
-          </div>
-        </div>
-
-        <div class="two-col">
-          <h3>What you’ll get (baseline)</h3>
-          <ul class="list">
-            <li>Family raised, handled from day one.</li>
-            <li>Raised around household noise + kids.</li>
-            <li>Raw organic feeding from our program.</li>
-            <li>Temperament and home-match focus (not “first to pay”).</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAST PUPS -->
-    <section id="pups">
-      <div class="section-head">
-        <h2>Past pups</h2>
-        <span>History matters. Results matter.</span>
-      </div>
-
-      <div class="grid">
-        <div class="two-col" style="grid-column: span 12;">
-          <h3>Gallery (add your images)</h3>
-          <p style="margin:0;color:var(--muted);font-size:13px">
-            Drop in your hosted puppy image URLs below. Keep it clean: 8–16 strong photos beats 60 randoms.
-          </p>
-          <div style="margin-top:12px; display:grid; grid-template-columns: repeat(4, 1fr); gap:10px;">
-            <!-- Replace each src with a hosted puppy photo URL -->
-            <img src="PUP_PHOTO_01.jpg" alt="Illfigah pup" style="width:100%;height:150px;object-fit:cover;border-radius:14px;border:1px solid var(--line)" />
-            <img src="PUP_PHOTO_02.jpg" alt="Illfigah pup" style="width:100%;height:150px;object-fit:cover;border-radius:14px;border:1px solid var(--line)" />
-            <img src="PUP_PHOTO_03.jpg" alt="Illfigah pup" style="width:100%;height:150px;object-fit:cover;border-radius:14px;border:1px solid var(--line)" />
-            <img src="PUP_PHOTO_04.jpg" alt="Illfigah pup" style="width:100%;height:150px;object-fit:cover;border-radius:14px;border:1px solid var(--line)" />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STANDARDS -->
-    <section id="standards">
-      <div class="section-head">
-        <h2>Standards</h2>
-        <span>How we raise them. How we place them.</span>
-      </div>
-
-      <div class="grid">
-        <div class="two-col">
-          <h3>Raising standard</h3>
-          <ul class="list">
-            <li><strong>100% raw organic feeding</strong> across our dogs and pups.</li>
-            <li>Family environment — raised around <strong>small infants to teenagers</strong>.</li>
-            <li>Social exposure + household routines.</li>
-            <li>Temperament first. Structure and stability over “flash”.</li>
-          </ul>
-        </div>
-
-        <div class="two-col">
-          <h3>Home standard</h3>
-          <ul class="list">
-            <li>All owners are screened for <strong>past animal welfare crimes</strong>.</li>
-            <li><strong>Backyard photos</strong> required (or your living setup if you’re apartment-based).</li>
-            <li><strong>Means to care</strong> must be proven (food, vet, containment, training).</li>
-            <li>No impulse buyers. No “surprise present”. No exceptions.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROCESS -->
-    <section id="process">
-      <div class="section-head">
-        <h2>Process</h2>
-        <span>Step-by-step. Simple. Firm.</span>
-      </div>
-
-      <div class="grid">
-        <div class="two-col">
-          <h3>1) Enquiry</h3>
-          <ul class="list">
-            <li>Email with your full details (name, location, family situation).</li>
-            <li>Why you want an Illfigah dog (be honest).</li>
-            <li>Your budget and timeline.</li>
-          </ul>
-        </div>
-
-        <div class="two-col">
-          <h3>2) Screening</h3>
-          <ul class="list">
-            <li>Welfare history check.</li>
-            <li>Backyard photos / containment plan.</li>
-            <li>Vet references (if you have them).</li>
-          </ul>
-        </div>
-
-        <div class="two-col">
-          <h3>3) Match & confirmation</h3>
-          <ul class="list">
-            <li>We match pups to homes — not the other way around.</li>
-            <li>Final confirmation only after your screening is cleared.</li>
-          </ul>
-        </div>
-
-        <div class="two-col">
-          <h3>4) Collection & follow-up</h3>
-          <ul class="list">
-            <li>Clear handover plan.</li>
-            <li>Ongoing support for the right owners.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAYMENTS -->
-    <section id="payments">
-      <div class="section-head">
-        <h2>Payments</h2>
-        <span>No games. Clear policy.</span>
-      </div>
-
-      <div class="grid">
-        <div class="two-col" style="grid-column: span 12;">
-          <h3>Accepted payment methods</h3>
-          <ul class="list">
-            <li><strong>Direct bank transfer</strong></li>
-            <li><strong>Cash</strong> (cash is king 👌🏽)</li>
-            <li><strong>Gold</strong></li>
-            <li><strong>Silver</strong></li>
-          </ul>
-          <div style="margin-top:12px" class="note">
-            If you can’t pay clean and direct, you’re not our buyer. Simple.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MENTORING / CO-OWN -->
-    <section id="mentoring">
-      <div class="section-head">
-        <h2>Mentoring / Co-own</h2>
-        <span>Navigation only — email enquiry with full details.</span>
-      </div>
-
-      <div class="grid">
-        <div class="two-col" style="grid-column: span 12;">
-          <h3>Mentoring / Co-own enquiry</h3>
-          <p style="margin:0;color:var(--muted);font-size:13px">
-            If you want mentoring or a co-own pathway, email us with <span class="gold">full details</span> and your <span class="gold">budget</span>.
-            If it’s vague, it gets ignored.
-          </p>
-          <div class="cta-row" style="margin-top:12px">
-            <a class="btn primary" href="mailto:itsspyce@gmail.com?subject=Illfigah%20Mentoring%20%2F%20Co-own%20Enquiry&body=Full%20name%3A%0D%0ALocation%3A%0D%0AExperience%20with%20bull%20breeds%3A%0D%0AFamily%20setup%20(kids%2Fother%20animals)%3A%0D%0AContainment%20plan%20(backyard%2Ffencing)%3A%0D%0ABudget%3A%0D%0AWhat%20you%20want%20(mentoring%20or%20co-own)%3A%0D%0ATimeline%3A%0D%0ALinks%20to%20photos%20(backyard%20and%20current%20setup)%3A%0D%0A">
-              Email mentoring / co-own
-            </a>
-            <a class="btn" href="#process">Review process</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <div class="section-head">
-        <h2>Contact</h2>
-        <span>Direct. Simple.</span>
-      </div>
-
-      <div class="grid">
-        <div class="two-col" style="grid-column: span 12;">
-          <h3>Email</h3>
-          <p style="margin:0;color:var(--muted);font-size:13px">
-            <a class="gold" href="mailto:itsspyce@gmail.com">itsspyce@gmail.com</a>
-          </p>
-          <div style="margin-top:12px" class="note">
-            Include: your location, family setup, experience, containment, and budget.
-            If you don’t meet the standard, we won’t place a pup with you.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="footer">
-      <div>
-        <strong style="color:var(--text); letter-spacing:.14em; text-transform:uppercase;">Illfigah Kennels</strong>
-        <span style="margin-left:8px; letter-spacing:.18em; text-transform:uppercase;">Bred Different</span>
-      </div>
-      <div style="margin-top:8px">
-        This page is designed as a directory. Keep it updated. Keep it clean. Authority over sales.
-      </div>
-    </div>
-  </main>
-
-  <!-- Optional: smooth scroll -->
-  <script>
-    // Smooth scroll for in-page anchors
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        const id = a.getAttribute('href');
-        const el = document.querySelector(id);
-        if(!el) return;
-        e.preventDefault();
-        el.scrollIntoView({behavior:'smooth', block:'start'});
-      });
-    });
-  </script>
 </body>
 </html>
